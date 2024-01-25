@@ -1,0 +1,22 @@
+@import "utilities/variables";
+
+@import "base/reset";
+@import "base/typography";
+
+@import "components/buttons";
+
+@import "layout/header";
+@import "layout/banner";
+@import "layout/categories";
+@import "layout/hero-iphone";
+@import "layout/cards_producto";
+@import "layout/products";
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1em;
+    position: static;
+    bottom: 0;
+    width: 100%;
+}

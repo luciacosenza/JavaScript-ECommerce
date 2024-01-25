@@ -1,0 +1,54 @@
+.products_container{
+    background-color: white;
+    padding: 100px;
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: auto auto auto;
+    grid-template-areas: "filters category"
+                         "filters products"
+                         "filters pages";
+}
+
+.filters{
+    grid-area: filters;
+    background-color: F5F5F7;
+    border-right: 0.5px solid black;
+    .modelos{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.category{
+    display: block;
+    grid-area: category;
+    margin-left: 50px;
+    h1{
+        font-size: 30px;
+    }
+}
+
+.products{
+    width: 100%;
+    grid-area: products;
+    background-color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.pages{
+    grid-area: pages;
+    background-color: red;
+}
+
+.modelos{
+    li{
+        display: flex;
+        list-style: none;
+        color: $color-resaltado;
+        margin-bottom: 5px;
+    }
+}

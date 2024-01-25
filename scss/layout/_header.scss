@@ -1,0 +1,100 @@
+nav{
+    width: 100%;
+    color: $color-texto;
+    background-color: black;
+    padding: 10px 20px 10px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.09);
+    h2{
+        font-size: 20px;
+        font-weight: 100;
+        font-family: 'Blanka', sans-serif;                                             
+    }
+}
+.menu_container{
+    font-size: 14px;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+}
+.menu_horizontal{
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    li{
+        a{
+            display: block;
+            padding: 20px;
+            transition: 0.5s;
+            &:hover {
+                color: gray;
+            }
+        }
+    }
+}
+.menu_vertical{
+    transition: 1s;
+    position: absolute;
+    display: none;
+    list-style: none;
+    width: 200px;
+    background-color: $color-fondo-oscuro;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.213);
+    margin-left: 0;
+    padding-left: 0;
+    li{
+        width: 100%;
+        margin-left: 0;
+        &:hover{
+            background-color: rgba(10, 10, 10,);
+        }
+    }
+}
+.menu_horizontal li:hover .menu_vertical{
+    display: block;
+    transition: 1s;
+}
+.search_container{
+    display: flex;
+    align-items: center;
+    i{
+        padding: 20px;
+    }
+    button{
+        background-color: transparent;
+        width: auto;
+    }
+}
+#search-input{
+    display: none;
+    opacity: 0;
+    transform: translatex(20px);
+    animation: fadeInUp 0.5s ease-in-out forwards;
+    background-color: transparent;
+    box-shadow: none;
+    width: 200px;
+    height: 40px;
+    border: none;
+    border-bottom: 1px solid white;
+    color: $color-texto;
+    &::placeholder{
+    color: $color-texto;
+    font-size: 16px;
+    }
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,0 +1,436 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;1,100;1,400&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.cdnfonts.com/css/blanka");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+  color: #ebe7dc;
+}
+
+body {
+  background-color: black;
+}
+
+@font-face {
+  font-family: "SFPro";
+  font-weight: normal;
+  src: url(../../fonts/SFPro/SF-Pro-Display-Regular.otf);
+}
+@font-face {
+  font-family: "SFPro";
+  font-weight: 300;
+  src: url(../../fonts/SFPro/SF-Pro-Display-Medium.otf);
+}
+@font-face {
+  font-family: "SFPro";
+  font-weight: 100;
+  src: url(../../fonts/SFPro/SF-Pro-Display-Light.otf);
+}
+body {
+  font-family: "SFPro", sans-serif;
+}
+
+button {
+  width: 150px;
+  border-radius: 10px;
+  transition: 1s;
+  background-color: #333;
+  color: #ffffff;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+}
+button a {
+  text-decoration: none;
+  color: #ffffff;
+}
+button:hover {
+  background-color: #ffffff;
+}
+button:hover a {
+  color: #000;
+}
+
+.btn {
+  width: 40px;
+  background-color: rgba(255, 255, 255, 0.3960784314);
+}
+
+.navbar-toggler {
+  width: 60px;
+  transition: 1s;
+  border: 1px solid rgba(255, 255, 255, 0.368627451);
+}
+.navbar-toggler:hover {
+  background-color: #333;
+  border: 1px solid #ffffff;
+}
+
+.filtro-btn {
+  background-color: transparent;
+  color: black;
+  width: auto;
+  text-align: left;
+  transition: 0.2s;
+}
+.filtro-btn:hover {
+  color: #2797fe;
+}
+
+nav {
+  width: 100%;
+  color: #ffffff;
+  background-color: black;
+  padding: 10px 20px 10px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.09);
+}
+nav h2 {
+  font-size: 20px;
+  font-weight: 100;
+  font-family: "Blanka", sans-serif;
+}
+
+.menu_container {
+  font-size: 14px;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.menu_horizontal {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.menu_horizontal li a {
+  display: block;
+  padding: 20px;
+  transition: 0.5s;
+}
+.menu_horizontal li a:hover {
+  color: gray;
+}
+
+.menu_vertical {
+  transition: 1s;
+  position: absolute;
+  display: none;
+  list-style: none;
+  width: 200px;
+  background-color: black;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.213);
+  margin-left: 0;
+  padding-left: 0;
+}
+.menu_vertical li {
+  width: 100%;
+  margin-left: 0;
+}
+.menu_vertical li:hover {
+  background-color: rgb(10, 10, 10);
+}
+
+.menu_horizontal li:hover .menu_vertical {
+  display: block;
+  transition: 1s;
+}
+
+.search_container {
+  display: flex;
+  align-items: center;
+}
+.search_container i {
+  padding: 20px;
+}
+.search_container button {
+  background-color: transparent;
+  width: auto;
+}
+
+#search-input {
+  display: none;
+  opacity: 0;
+  transform: translatex(20px);
+  animation: fadeInUp 0.5s ease-in-out forwards;
+  background-color: transparent;
+  box-shadow: none;
+  width: 200px;
+  height: 40px;
+  border: none;
+  border-bottom: 1px solid white;
+  color: #ffffff;
+}
+#search-input::placeholder {
+  color: #ffffff;
+  font-size: 16px;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+#banner {
+  width: 100%;
+  height: 500px;
+  background-image: url("../assets/iphone15pro.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: white;
+}
+#banner div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+  height: 50%;
+}
+#banner div h1 {
+  color: #ffffff;
+  font-weight: normal;
+  font-size: 48px;
+}
+#banner div h1 span {
+  font-family: "Blanka", sans-serif;
+}
+#banner div h3 {
+  color: #ffffff;
+  font-weight: 100;
+}
+#banner div button {
+  background-color: transparent;
+}
+#banner div button a {
+  color: #2797fe;
+}
+
+.product_categories {
+  flex-direction: row;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  height: 450;
+  width: 100%;
+  background-color: #f5f5f7;
+  padding: 50px;
+}
+
+.category_card {
+  border-radius: 10px;
+  border: 1px solid var(--Style-Style-7, #E9F0F7);
+  background: var(--Style-Style-6, linear-gradient(313deg, rgba(255, 255, 255, 0.3) 4.49%, rgba(233, 240, 247, 0.3) 95.45%), #f5f5f7);
+  box-shadow: -5px -5px 18px 0px #FFF, 4px 4px 16px 0px rgba(138, 155, 189, 0.48);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  width: 200px;
+  height: auto;
+}
+.category_card img {
+  width: 200px;
+  height: 144px;
+  object-fit: contain;
+  padding: 20px;
+  filter: drop-shadow(1px 2px 20px grey);
+}
+.category_card .category_details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.category_card .category_details h2 {
+  font-size: 1em;
+  margin-bottom: 2px;
+  text-align: center;
+}
+.category_card .category_details button {
+  width: 70%;
+  height: 40px;
+  font-size: 15px;
+  background-color: transparent;
+}
+.category_card .category_details button a {
+  color: #2797fe;
+}
+
+.banner_producto {
+  background-color: #fff;
+  width: 100%;
+}
+
+.titulo_producto {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.titulo_producto h1 {
+  font-size: 3.125rem;
+}
+.titulo_producto p {
+  font-size: 30px;
+}
+
+.hero_iphone {
+  background-image: url("/assets/iphone15hero.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 386px;
+}
+
+.iphone_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 20px;
+  flex-wrap: wrap;
+  width: 100%;
+  height: auto;
+  padding: 50px;
+  background-color: #f5f5f7;
+}
+
+.card_producto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: auto;
+  padding: 10px;
+  border-radius: 10px;
+}
+.card_producto h4 {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 300;
+}
+.card_producto span {
+  font-size: 16px;
+  font-weight: 300;
+}
+.card_producto button {
+  margin-top: 10px;
+  background-color: transparent;
+  border-radius: 10px;
+  border: 0.5px solid grey;
+}
+.card_producto button a {
+  color: black;
+}
+
+.info_producto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.info_producto span {
+  margin-bottom: 10px;
+}
+
+.price {
+  font-size: 20px;
+  margin-top: 10px;
+  color: #2797fe;
+}
+
+.no-results {
+  width: 100%;
+  font-size: 40px;
+  text-align: center;
+  margin-left: 50px;
+  font-family: "SFPro";
+  font-weight: 100;
+}
+
+.products_container {
+  background-color: white;
+  padding: 100px;
+  width: 100%;
+  height: auto;
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-template-rows: auto auto auto;
+  grid-template-areas: "filters category" "filters products" "filters pages";
+}
+
+.filters {
+  grid-area: filters;
+  background-color: F5F5F7;
+  border-right: 0.5px solid black;
+}
+.filters .modelos {
+  display: flex;
+  flex-direction: column;
+}
+
+.category {
+  display: block;
+  grid-area: category;
+  margin-left: 50px;
+}
+.category h1 {
+  font-size: 30px;
+}
+
+.products {
+  width: 100%;
+  grid-area: products;
+  background-color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pages {
+  grid-area: pages;
+  background-color: red;
+}
+
+.modelos li {
+  display: flex;
+  list-style: none;
+  color: #2797fe;
+  margin-bottom: 5px;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 1em;
+  position: static;
+  bottom: 0;
+  width: 100%;
+}
+
+/*# sourceMappingURL=style.css.map */

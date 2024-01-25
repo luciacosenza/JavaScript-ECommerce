@@ -1,0 +1,45 @@
+button{
+    width: 150px;
+    border-radius: 10px;
+    transition: 1s;
+    background-color: #333;
+    color: $color-texto;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    a{
+        text-decoration: none;
+        color: $color-texto;
+    }
+    &:hover{
+        background-color: $color-texto;
+        a{
+            color: #000;
+        }
+    }
+}
+.btn{
+    width: 40px;
+    background-color: #ffffff65;
+}
+
+.navbar-toggler{
+    width: 60px;
+    transition: 1s;
+    border: 1px solid #ffffff5e;
+    &:hover{
+        background-color: #333;
+        border: 1px solid $color-texto;
+    }
+}
+
+.filtro-btn{
+    background-color: transparent;
+    color: black;
+    width: auto;
+    text-align: left;
+    transition: 0.2s;
+    &:hover{
+        color: $color-resaltado;
+    }
+}
