@@ -59,9 +59,16 @@
                     <button id="search-btn">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
-                    <button>
+                    <div>
                         <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
+                        <div class="cart_products">
+                            <h5>Carrito de compras (<span class="cart_length">0</span>)</h5>
+                            <div class="products_list">
+                                <!-- elementos en el carrito -->
+                            </div>
+                            <h6>Total: $<span class="total"></span></h6>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -82,8 +89,12 @@
         <div class="products">    
             <!-- listado de productos -->
         </div>
-        <div class="pages"></div>
+        <div class="controles_paginacion">
+            <button class="btn_anterior"><i class="fa-solid fa-chevron-left"></i></button>
+            <span class="numero_pagina">1</span>
+            <button class="btn_siguiente"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
     </section>
-    <script src="/products.js"></script>
+    <script src="/main.js"></script>
 </body>
 </html>

@@ -15,6 +15,11 @@
     font-weight: 100;
     src: url(../../fonts/SFPro/SF-Pro-Display-Light.otf);
 }
+@font-face {
+    font-family: 'SFPro Rounded';
+    font-weight: 500;
+    src: url(/fonts/SFPro/SF-Pro-Rounded-Semibold.otf);
+}
 body{
     font-family: 'SFPro', sans-serif;
 }
