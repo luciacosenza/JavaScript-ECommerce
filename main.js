@@ -1,3 +1,5 @@
+// ! <------------------------------------IPHONE.HTML------------------------------------>
+if(document.getElementById("body_iphone")){
 /* LISTADO DE MODELOS*/
 const modelosIphone =[
     {nombre: 'iPhone 15 Pro Max', capacidad: 256, color: 'Blue Titanium',     precio: 1300, img:'/assets/iphones/iphone-15-pro-max-bt.png', stock: 7},
@@ -43,9 +45,11 @@ function sinEspacios(cadena){
     return cadena.replace(/\s/g, '');
 }
 
+//FUNCION QUE LIMPIIA EL CONTENEDOR DE LOS PRODUCTOS
 function limpiarContenedor(){
     productsContainer.innerHTML = '';
 }
+
 //GENERA UN BOTON POR CADA MODELO
 function generarBotonesFiltro(){
     const seccionFiltroModelos = document.querySelector('.modelos');
@@ -70,23 +74,6 @@ function generarBotonesFiltro(){
 }
  */
 
-//FILTRA LAS CARDS SEGUN EL MODELO SELECCIONADO
-let filtroActual = JSON.parse(localStorage.getItem('filtro'));
-
-function filtrar(modelo) {
-    if (modelo == 'Todos los modelos'){
-        limpiarContenedor();
-        //generarTarjetasProducto(modelosIphone);
-        mostrarArticulos(modelosIphone);
-        localStorage.setItem('filtro', JSON.stringify(modelosIphone));
-    } else{
-        const productosFiltrados = modelosIphone.filter(producto => producto.nombre === modelo);
-        limpiarContenedor();
-        //generarTarjetasProducto(productosFiltrados);
-        localStorage.setItem('filtro', JSON.stringify(productosFiltrados));
-        mostrarArticulos(productosFiltrados);
-    }
-}
 
 //BUSQUEDA
 const iconBusqueda = document.querySelector('#search-btn');
@@ -103,7 +90,8 @@ function buscar(producto){
     });
     if (productosFiltrados.length !== 0){
         limpiarContenedor();
-        generarTarjetasProducto(productosFiltrados);
+        //generarTarjetasProducto(productosFiltrados);
+        mostrarArticulos(productosFiltrados);
     } else{
         limpiarContenedor();
         productsContainer.innerHTML = /* HTML */
@@ -174,8 +162,6 @@ function actualizarCarrito() {
     }
 }
 
-
-
 function agregarAlCarrito(product){
     if(product.stock > 0){
         carrito.push(product);
@@ -200,8 +186,7 @@ function eliminarDelCarrito(product){
         actualizarCarrito();
     }
 }
-
-
+// Al presionar el icono de "basura", elimina el producto del carrito
 cartList.addEventListener('click', e => {
     e.preventDefault();
     if (e.target.classList.contains('remove_item')){
@@ -215,7 +200,7 @@ cartList.addEventListener('click', e => {
         eliminarDelCarrito(productoEnCarrito);
     }
 })
-
+// Al presionar "agregar al carrito", agrega el producto al carrito
 productsContainer.addEventListener('click', e => {
     e.preventDefault();
     if (e.target.classList.contains('btn_add_to_cart')){
@@ -231,11 +216,16 @@ productsContainer.addEventListener('click', e => {
     }
 })
 
-//PAGINACION
+
+
+
+/* <-----------------------------------PAGINACION------------------------------------> */
 const btnSiguiente = document.querySelector('.btn_siguiente');
 const btnAnterior = document.querySelector('.btn_anterior');
-const itemsPorPagina = 9; // Número de artículos por página
-let paginaActual = 1; // Página actual
+const itemsPorPagina = 9; 
+let paginaActual = 1; 
+let filtroActual = JSON.parse(localStorage.getItem('filtro'));
+
 
 // Función para cambiar de página
 function cambiarPagina(direccion) {
@@ -260,7 +250,8 @@ function mostrarArticulos(listaArticulos) {
     const inicio = (paginaActual - 1) * itemsPorPagina;
     const fin = inicio + itemsPorPagina;
     const articulosPagina = listaArticulos.slice(inicio, fin);
-    productsContainer.innerHTML = '';
+    console.log(articulosPagina);
+    limpiarContenedor();
     for (const producto of articulosPagina) {
         productsContainer.innerHTML += /*HTML*/
                                     `<div class="card_producto">
@@ -272,6 +263,26 @@ function mostrarArticulos(listaArticulos) {
                                     </div>`
     }
     numeroPaginaSpan.textContent = paginaActual;
+}
+
+//FILTRA LAS CARDS SEGUN EL MODELO SELECCIONADO
+
+function filtrar(modelo) {
+    paginaActual = 1
+    if (modelo == 'Todos los modelos'){
+        limpiarContenedor();
+        //generarTarjetasProducto(modelosIphone);
+        filtroActual = modelosIphone
+        mostrarArticulos(modelosIphone);
+        localStorage.setItem('filtro', JSON.stringify(modelosIphone));
+    } else{
+        const productosFiltrados = modelosIphone.filter(producto => producto.nombre === modelo);
+        limpiarContenedor();
+        //generarTarjetasProducto(productosFiltrados);
+        filtroActual = productosFiltrados;
+        localStorage.setItem('filtro', JSON.stringify(productosFiltrados));
+        mostrarArticulos(productosFiltrados);
+    }
 }
 
 
@@ -295,6 +306,8 @@ document.addEventListener('DOMContentLoaded', function () {
         filtroActual = JSON.parse(filtroGuardado);
     }
 
+    console.log(filtroActual);
+
     const todosLosBotonesDeFiltro = document.querySelectorAll('.filtro-btn')
     todosLosBotonesDeFiltro.forEach(button => {
         button.addEventListener('click', function() {
@@ -304,12 +317,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
+}
 
 
-
-
-
-/*-------------------------------------INDEX.HTML-----------------------------------*/
+//! <-------------------------------------INDEX.HTML------------------------------------->
+if ( document.getElementById("body_index") ){
 /* CATEGORY CARDS */
 const categories = [
     {name: 'Iphone', img:'./assets/iphone.png', description:'iPhone'},
@@ -351,5 +363,5 @@ for (let i = 0; i < iphones.length; i++){
                                         </div>
                                     </div>`
 }
-
+}
 
