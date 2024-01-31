@@ -22,9 +22,15 @@
 }
 
 .category{
-    display: block;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     grid-area: category;
     margin-left: 50px;
+    div{
+        flex-direction: column;
+    }
     h1{
         font-size: 30px;
     }

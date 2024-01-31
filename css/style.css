@@ -223,7 +223,7 @@ nav h2 {
 }
 
 .cart_products {
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -484,9 +484,15 @@ nav h2 {
 }
 
 .category {
-  display: block;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   grid-area: category;
   margin-left: 50px;
+}
+.category div {
+  flex-direction: column;
 }
 .category h1 {
   font-size: 30px;

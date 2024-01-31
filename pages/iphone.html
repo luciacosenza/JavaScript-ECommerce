@@ -79,6 +79,7 @@
     <section class="products_container">
         <div class="filters">
             <h3>iPhone</h3>
+            <i class="fa-solid fa-filter"></i>
             <hr>
             <div class="modelos">
                 <button class="filtro-btn">Todos los modelos</button>
@@ -86,8 +87,15 @@
             </div>
         </div>
         <div class="category">
-            <h1>iPhone</h1>
-            <p> 1 de 80 Articulos</p>
+            <div>
+                <h1>iPhone</h1>
+                <p><span class="cant_articulos">0</span> articulos</p>
+            </div>
+            <select id="order">
+                <option value="ascendente">Precio (ascendente)</option>
+                <option value="descendente">Precio (descenedente)</option>
+                <option value="alfabetico">Alfabeticamente</option>
+            </select>
         </div>
         <div class="products">    
             <!-- listado de productos -->
@@ -98,6 +106,8 @@
             <button class="btn_siguiente"><i class="fa-solid fa-chevron-right"></i></button>
         </div>
     </section>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="/main.js"></script>
 </body>

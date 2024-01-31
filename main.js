@@ -28,7 +28,7 @@ const models =[
     {name: 'iPhone 14',         capacity: 128, color: 'Purple' ,          price: 800,  img:'/assets/iphones/iphone-14-purple.png', stock: 4},
     {name: 'iPhone 13',         capacity: 128, color: 'Starlight',        price: 700,  img:'/assets/iphones/iphone-13-starlight.png', stock: 3},
     {name: 'iPhone SE 3rd gen', capacity: 128, color: 'Red',              price: 600,  img:'/assets/iphones/iphone-se-red.png', stock: 5},
-]
+];
 
 const productsContainer = document.querySelector('.products');
 
@@ -101,9 +101,7 @@ inputBusqueda.addEventListener('change', function(){
 const cartBtn = document.querySelector('.fa-cart-shopping');
 const cartProductsContainer = document.querySelector('.cart_products');
 const cartList = document.querySelector('.products_list');
-const spanTotal = document.querySelector('.total');
 const itemsEnCarrito = document.querySelectorAll('.cart_length');
-
 let carrito = []
 let total = 0;
 
@@ -123,6 +121,7 @@ cartBtn.addEventListener("click", function(){
 
 
 function actualizarCarrito() {
+    const spanTotal = document.querySelector('.total');
     if (carrito.length !== 0){
         cartList.innerHTML = '';
         spanTotal.innerHTML = '';
@@ -158,14 +157,20 @@ function agregarAlCarrito(product){
         product.stock -=1;
         localStorage.setItem('carrito', JSON.stringify(carrito));
         localStorage.setItem('total', total);
+        localStorage.setItem('productos', JSON.stringify(models));
         actualizarCarrito();
         Toastify({
             text: `Se ha agregado ${product.name} al carrito`,
             gravity: "bottom",
             className: "btn-grad"
-          }).showToast();
+        }).showToast();
     } else {
-        alert(`no hay mas ${product.name} ${product.color} ${product.capacity}GB disponible`)
+        Swal.fire({
+            title: 'Error!',
+            text: `No hay mas stock de ${product.name} ${product.color} ${product.capacity}`,
+            icon: 'error',
+            confirmButtonText: 'Aceptar'
+        })
     }
 }
 
@@ -177,6 +182,7 @@ function eliminarDelCarrito(product){
         total -= product.price;
         localStorage.setItem('carrito', JSON.stringify(carrito));
         localStorage.setItem('total', total);
+        localStorage.setItem('productos', JSON.stringify(models));
         actualizarCarrito();
     }
 }
@@ -260,7 +266,6 @@ function filtrar(modelo) {
     paginaActual = 1
     if (modelo == 'Todos los modelos'){
         limpiarContenedor();
-        //generarTarjetasProducto(models);
         filtroActual = models;
         mostrarArticulos(models);
         localStorage.setItem('filtro', JSON.stringify(models));
@@ -273,30 +278,83 @@ function filtrar(modelo) {
     }
 }
 
+// Cambia el titulo segun el filtro actual
+function setearTitulo(texto) {
+    const  title = document.querySelector('h1');
+    title.innerText = texto;
+}
+// Muestra la cantidad de elementos segun el filtro
+function setearCantidad(){
+    const span = document.querySelector('.cant_articulos');
+    let total = filtroActual.length;
+    span.innerText= `${total}`;
+}
+
+// ORDENAR
+const order = document.querySelector('#order');
+
+order.addEventListener("change", ()=>{
+    const selectedElement = order.value;
+    ordenarSegun(selectedElement);
+});
+
+function ordenarSegun(criterio){
+    if ( criterio == 'ascendente'){
+        filtroActual.sort((a, b) => a.price - b.price);
+    } else if ( criterio == 'descendente'){
+        filtroActual.sort((a,b)=> b.price-a.price);
+    } else {
+        filtroActual.sort((a,b) => a.name.localeCompare(b.name));
+    }
+    mostrarArticulos(filtroActual);
+}
 
 document.addEventListener('DOMContentLoaded', function () {
-    generarBotonesFiltro();
-    mostrarArticulos(models);
-
-    const carritoGuardado = localStorage.getItem('carrito');
-    const totalGuardado = localStorage.getItem('total');
     const filtroGuardado = localStorage.getItem('filtro');
-
-    if(totalGuardado){
-        total = parseInt(totalGuardado);
+    if ( filtroGuardado ) {
+        filtroActual = JSON.parse(filtroGuardado);
+    } else{
+        filtroActual = models;
     }
-    if (carritoGuardado ) {
+
+    const stockActualizado = localStorage.getItem('products')
+    if(stockActualizado){
+        models = JSON.parse(stockActualizado);
+    }
+
+    const totalGuardado = localStorage.getItem('total');
+    if( totalGuardado ){
+        total = parseInt(totalGuardado);
+    } else{
+        total = 0
+    }
+    
+    const carritoGuardado = localStorage.getItem('carrito');
+    if ( carritoGuardado ) {
         carrito = JSON.parse(carritoGuardado);
         actualizarCarrito();
     }
-    if (filtroGuardado) {
-        filtroActual = JSON.parse(filtroGuardado);
+    
+    const nombreFiltro = localStorage.getItem('nombreFiltro');
+    if (nombreFiltro){
+        setearTitulo(nombreFiltro);
+    } else{
+        setearTitulo('Todos los modelos');
     }
+    
+    
+    setearCantidad();
+    mostrarArticulos(filtroActual);
+    generarBotonesFiltro();
 
-    const todosLosBotonesDeFiltro = document.querySelectorAll('.filtro-btn')
-    todosLosBotonesDeFiltro.forEach(button => {
+    
+    const botonesFiltro = document.querySelectorAll('.filtro-btn')
+    botonesFiltro.forEach(button => {
         button.addEventListener('click', function() {
             filtrar(this.textContent);
+            setearTitulo(this.textContent);
+            setearCantidad();
+            localStorage.setItem('nombreFiltro', this.textContent);
         });
     });
 
