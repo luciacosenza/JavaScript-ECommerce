@@ -367,7 +367,7 @@ document.addEventListener('DOMContentLoaded', function () {
 if ( document.getElementById("body_index") ){
 /* CATEGORY CARDS */
 const categories = [
-    {name: 'Iphone', img:'./assets/iphone.png', description:'iPhone', page: '/pages/iphone.html'},
+    {name: 'Iphone', img:'./assets/iphone.png', description:'iPhone', page: './pages/iphone.html'},
     {name: 'Mac', img:'./assets/macbook.png', description:'MacBook', page: ''},
     {name: 'iPad', img:'./assets/ipad.png', description:'iPad', page: ''},
     {name: 'Watch', img:'./assets/watch.png', description:'Apple Watch', page: ''},
