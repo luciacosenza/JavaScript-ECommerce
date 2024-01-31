@@ -63,12 +63,14 @@ nav{
 .search_container{
     display: flex;
     align-items: center;
-    i{
-        padding: 20px;
-    }
     button{
         background-color: transparent;
         width: auto;
+        i{
+            color: white;
+            font-size: 16px;
+            padding: 20px;
+        }
     }
 }
 #search-input{
