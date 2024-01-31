@@ -19,12 +19,12 @@ body {
 @font-face {
   font-family: "SFPro";
   font-weight: normal;
-  src: url(../../fonts/SFPro/SF-Pro-Display-Regular.otf);
+  src: url("../fonts/SFPro/SF-Pro-Display-Regular.otf");
 }
 @font-face {
   font-family: "SFPro";
   font-weight: 300;
-  src: url(../../fonts/SFPro/SF-Pro-Display-Medium.otf);
+  src: url("../fonts/SFPro/SF-Pro-Display-Medium.otf");
 }
 @font-face {
   font-family: "SFPro";
