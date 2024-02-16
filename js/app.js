@@ -41,7 +41,7 @@ const sinEspacios = (cadena) => {
 async function getProducts() {
     hideLoader();
     try {
-        const endPoint = '../js/data.json';
+        const endPoint = './data.json';
         const response = await fetch(endPoint);
         const data = await response.json();
         const { products, categories } = data;
@@ -86,30 +86,6 @@ async function getProducts() {
     
 }
 
-/* async function getCategories() {
-    showLoader();
-    try {
-        const endPoint = '../js/data.json';
-        const response = await fetch(endPoint);
-        const data = await response.json();
-        const { categories } = data;
-        categorias = categories;
-        renderNav(categorias);
-
-        ( bodyIndex ) ? renderCategories(categorias) : null;
-
-        return categorias;
-    } catch(error) {
-        console.log(error);
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Ocurrió un error al cargar los datos!",
-        });
-    } finally {
-        hideLoader(); 
-    }
-} */
 
 // Renderiza las categorias en el index
 const renderCategories = (list) => {
@@ -243,19 +219,19 @@ cartProductsContainer.addEventListener('click', e =>{
     }
 }); 
 
-// añado event listener a la seccion de productos para que al clickear agregar al carrito se añada;
-productsContainer.addEventListener('click', e => {
-    e.preventDefault;
-    const btn = e.target
-    if ( btn.classList.contains('btn_add_to_cart')){
-        const ID = e.target.id;
-        const product = productos.find( p => p.id == ID ) ;
-        cart.addToCart(product);
-    }
-});
 
 if ( ! document.querySelector('#body_index')) {
-
+    
+    // añado event listener a la seccion de productos para que al clickear agregar al carrito se añada;
+    productsContainer.addEventListener('click', e => {
+        e.preventDefault;
+        const btn = e.target
+        if ( btn.classList.contains('btn_add_to_cart')){
+            const ID = e.target.id;
+            const product = productos.find( p => p.id == ID ) ;
+            cart.addToCart(product);
+        }
+    });
     // Añado un event listener al input para buscar productos
     searchInput.addEventListener('change', () => {
         showLoader();
