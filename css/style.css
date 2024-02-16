@@ -36,6 +36,11 @@ body {
   font-weight: 500;
   src: url(/fonts/SFPro/SF-Pro-Rounded-Semibold.otf);
 }
+@font-face {
+  font-family: "SFPro Rounded";
+  font-weight: 300;
+  src: url(/fonts/SFPro/SF-Pro-Rounded-Medium.otf);
+}
 body {
   font-family: "SFPro", sans-serif;
 }
@@ -101,11 +106,52 @@ button:hover a {
 }
 
 .btn-grad:hover {
-  background-position: right center; /* change the direction of the change here */
+  background-position: right center;
   color: #fff;
   text-decoration: none;
 }
 
+#checkout_btn {
+  background-color: #2797fe;
+  align-self: flex-end;
+  margin: 10px;
+}
+#checkout_btn a {
+  color: #fff;
+}
+#checkout_btn:hover {
+  color: #fff;
+}
+
+.loader {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  margin: 15px auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: #FFF;
+  box-shadow: -24px 0 #FFF, 24px 0 #FFF;
+  box-sizing: border-box;
+  animation: shadowPulse 2s linear infinite;
+}
+
+@keyframes shadowPulse {
+  33% {
+    background: #FFF;
+    box-shadow: -24px 0 #2797fe, 24px 0 #FFF;
+  }
+  66% {
+    background: #2797fe;
+    box-shadow: -24px 0 #FFF, 24px 0 #FFF;
+  }
+  100% {
+    background: #FFF;
+    box-shadow: -24px 0 #FFF, 24px 0 #2797fe;
+  }
+}
 nav {
   width: 100%;
   color: #ffffff;
@@ -132,19 +178,20 @@ nav h2 {
   justify-content: space-between;
 }
 
-.menu_horizontal {
+.nav_categories {
   list-style: none;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
-.menu_horizontal li a {
+.nav_categories li {
   display: block;
   padding: 20px;
   transition: 0.5s;
 }
-.menu_horizontal li a:hover {
+.nav_categories li:hover {
   color: gray;
+  cursor: pointer;
 }
 
 .menu_vertical {
@@ -226,19 +273,21 @@ nav h2 {
   display: none;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   position: absolute;
+  z-index: 100;
   right: 0px;
+  top: 12%;
   width: 500px;
-  height: auto;
+  height: 100vh;
   min-height: 10px;
   background-color: #fff;
   color: rgb(30, 29, 29);
   padding: 20px;
   border-radius: 10px;
   border: 0.5px solid grey;
-  animation-name: swing-in-top-fwd;
-  animation-duration: 1s;
+  animation-name: slide-in-right;
+  animation-duration: 0.5s;
   font-family: "SFPro Rounded";
 }
 .cart_products h5 {
@@ -288,6 +337,10 @@ nav h2 {
   color: gray;
 }
 
+.remove_item {
+  cursor: pointer;
+}
+
 @keyframes swing-in-top-fwd {
   0% {
     -webkit-transform: rotateX(-100deg);
@@ -301,6 +354,16 @@ nav h2 {
     transform: rotateX(0deg);
     -webkit-transform-origin: top;
     transform-origin: top;
+    opacity: 1;
+  }
+}
+@keyframes slide-in-right {
+  0% {
+    transform: translateX(1000px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
     opacity: 1;
   }
 }
@@ -394,27 +457,16 @@ nav h2 {
   color: #2797fe;
 }
 
-.iphone_container {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  gap: 20px;
-  flex-wrap: wrap;
-  width: 100%;
-  height: auto;
-  padding: 50px;
-  background-color: #f5f5f7;
-}
-
 .card_producto {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 300px;
-  height: auto;
+  height: 400px;
   padding: 10px;
   border-radius: 10px;
+  margin: 20px;
 }
 .card_producto h4 {
   text-align: center;
@@ -466,11 +518,11 @@ nav h2 {
   background-color: white;
   padding: 100px;
   width: 100%;
-  height: auto;
+  min-height: 100vh;
   display: grid;
   grid-template-columns: 20% 80%;
-  grid-template-rows: auto auto auto;
-  grid-template-areas: "filters category" "filters products" "filters pages";
+  grid-template-rows: auto auto;
+  grid-template-areas: "filters category" "filters products";
 }
 
 .filters {
@@ -500,25 +552,12 @@ nav h2 {
 
 .products {
   width: 100%;
+  height: auto;
   grid-area: products;
   background-color: #fff;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-}
-
-.controles_paginacion {
-  grid-area: pages;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   gap: 20px;
-  background-color: #f2f2f2;
-  height: 100px;
-}
-.controles_paginacion button {
-  width: 40px;
-  height: 40px;
 }
 
 .modelos li {
@@ -526,6 +565,171 @@ nav h2 {
   list-style: none;
   color: #2797fe;
   margin-bottom: 5px;
+}
+
+#checkout {
+  background-color: white;
+}
+#checkout main {
+  width: 100%;
+}
+#checkout main h1 {
+  font-family: "SFPro rounded";
+  font-weight: 300;
+  font-size: 2rem;
+  color: rgb(49, 49, 49);
+  text-align: center;
+  margin: 80px 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid grey;
+}
+
+#finalizar_compra {
+  display: flex;
+}
+
+#checkout_table {
+  width: 70%;
+  height: 100%;
+  background-color: white;
+  padding: 0px 100px 0px 100px;
+  border-collapse: collapse;
+  margin: 0px 40px;
+}
+#checkout_table tbody tr {
+  text-align: center;
+  border-bottom: 0.5px solid grey;
+}
+
+.checkout_product {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+.checkout_product img {
+  width: 100px;
+}
+.checkout_product div {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+}
+.checkout_product div span {
+  color: gray;
+}
+
+.checkout_quantity button {
+  width: 20px;
+  height: 20px;
+  border-radius: 2px;
+  padding: 0;
+}
+
+.checkout_data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  width: 30%;
+  background-color: rgba(209, 209, 209, 0.284);
+  margin: 40px;
+  margin-top: 0;
+}
+.checkout_data div {
+  width: 100%;
+  display: flex;
+  font-family: "SFPro Rounded";
+  font-weight: 300;
+  font-size: 24px;
+  color: rgb(61, 61, 61);
+}
+
+.checkout_total {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 30%;
+  border-bottom: 1px solid #ccc;
+  padding: 20px;
+}
+.checkout_total div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#discount_code {
+  padding: 20px;
+  flex-direction: row;
+  width: 100%;
+}
+#discount_code input[type=text] {
+  width: 80%;
+  text-align: left;
+  border-radius: 0px;
+  height: 50px;
+}
+#discount_code input[type=text]::placeholder {
+  color: #ccc;
+  padding: 20px;
+}
+#discount_code input[type=text]:valid {
+  padding: 20px;
+}
+#discount_code label {
+  font-size: 30px;
+  padding: 10px;
+}
+#discount_code button {
+  width: 20%;
+  height: 50px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+.discount_message {
+  width: 100%;
+  font-size: 14px;
+  text-align: center;
+}
+
+.error {
+  color: red;
+}
+
+.success {
+  color: green;
+}
+
+.discount_true {
+  text-decoration: line-through;
+}
+
+.discount {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+.total_price {
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.finalizar_compra {
+  width: 150px;
+  height: 50px;
+  background-color: #2797fe;
+  align-self: center;
+  justify-content: end;
+  margin: 20px;
 }
 
 footer {

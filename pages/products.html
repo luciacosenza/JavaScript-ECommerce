@@ -3,30 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GlobalTech | Inicio</title>
+    <title>GlobalTech | products </title>
     <!-- LIBRERIAS -->
     <script src="https://kit.fontawesome.com/a36eac1f6d.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <!-- /LIBRERIAS -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
-<body id="body_index">
+<body id="productos">
+    <span class="loader"></span>
     <header>
         <nav>
             <h2>GlobalTech</h2>
-            <div class="menu_container">
+            <div class="menu_container ">
                 <ul class="nav_categories">
-                    <li class="nav_btn"><a href="./pages/products.html?id=todos">Ver todos</a></li>
-                    <li class="nav_btn"><a href="./pages/products.html?id=1">iPhone</a></li>
-                    <li class="nav_btn"><a href="./pages/products.html?id=2">Mac</a></li>
-                    <li class="nav_btn"><a href="./pages/products.html?id=3">iPad</a></li>
-                    <li class="nav_btn"><a href="./pages/products.html?id=4">Watch</a></li>
-                    <li class="nav_btn"><a href="./pages/products.html?id=5">Accesorios</a></li>
-
+                    <li><a href="../index.html">Inicio</a></li>
+                    <!-- CATEGORIAS -->
                 </ul>
+
                 <div class="search_container">
+                    <input type="text" id="search-input" placeholder="Buscar producto...">
+                    <button id="search-btn">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                    <div>
                         <i class="fa-solid fa-cart-shopping"></i>
                         <span class="cart_length"> 0 </span>
                         <div class="cart_products">
@@ -36,33 +38,39 @@
                             </div>
                             <h6>Total: $<span class="total"></span></h6>
                             <button id="checkout_btn"><a href="./checkout.html">Finalizar compra</a></button>
+                        </div>
                     </div>
                 </div>
             </div>
         </nav>
     </header>
     <main>
-        <span class="loader"></span>
-        <section id="banner">
-            <div>
-                <h1>Somos <span>GlobalTech</span></h1>
-                <h3>Importadores de productos Apple al mejor precio</h3>
-                <button>
-                    <a href="./pages/products.html?id=todos">Comprar ></a>
-                </button>
+    <section class="products_container">
+        <div class="filters">
+            <h3>Filtrar</h3><i class="fa-solid fa-filter"></i>
+            <hr>
+            <div class="modelos">
+                <!-- listado de modelos -->
             </div>
-        </section>
-        <section class="product_categories">
-            <!-- CATEGORIAS -->
-        </section>
+        </div>
+        <div class="category">
+            <div>
+                <h1>Title</h1>
+                <p><span class="cant_articulos">0</span> articulos</p>
+            </div>
+            <select id="order">
+                <option value="ascendente">Precio (ascendente)</option>
+                <option value="descendente">Precio (descenedente)</option>
+                <option value="alfabetico">Alfabeticamente</option>
+            </select>
+        </div>
+        <div class="products">    
+            <!-- listado de productos -->
+        </div>
+    </section>
     </main>
-
-    <footer>
-        <p>&copy; 2024 The I Store. Todos los derechos reservados.</p>
-    </footer>
-
-
-    <script src="./js/cart.js"></script>
-    <script src="./js/app.js"></script>
+    
+    <script src="../js/cart.js"></script>
+    <script src="../js/app.js"></script>
 </body>
 </html>

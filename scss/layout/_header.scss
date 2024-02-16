@@ -22,19 +22,18 @@ nav{
     flex-direction: row;
     justify-content:space-between;
 }
-.menu_horizontal{
+.nav_categories{
     list-style: none;
     display: flex;
     justify-content: space-around;
     align-items: center;
     li{
-        a{
-            display: block;
-            padding: 20px;
-            transition: 0.5s;
-            &:hover {
-                color: gray;
-            }
+        display: block;
+        padding: 20px;
+        transition: 0.5s;
+        &:hover {
+            color: gray;
+            cursor: pointer;
         }
     }
 }

@@ -43,8 +43,6 @@ button{
         color: $color-resaltado;
     }
 }
-
-         
 .btn-grad {
     background-image: linear-gradient(to right, #232526 0%, #414345  51%, #232526  100%);
     margin: 10px;
@@ -56,11 +54,21 @@ button{
     box-shadow: 0 0 20px #eee;
     border-radius: 10px;
     display: block;
-  }
-
-  .btn-grad:hover {
-    background-position: right center; /* change the direction of the change here */
+}
+.btn-grad:hover {
+    background-position: right center; 
     color: #fff;
     text-decoration: none;
-  }
- 
+} 
+#checkout_btn{
+    background-color: $color-resaltado;
+    align-self: flex-end;
+    margin: 10px;
+    a{
+        color: #fff;
+    }    
+    &:hover{
+        color: #fff;
+    }
+
+}

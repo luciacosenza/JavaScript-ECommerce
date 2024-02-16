@@ -1,0 +1,158 @@
+#checkout{
+    background-color: white;
+    main{
+        width: 100%;
+        h1{
+            font-family: 'SFPro rounded';
+            font-weight: 300;
+            font-size: 2rem;
+            color: rgb(49, 49, 49);
+            text-align: center;
+            margin: 80px 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid grey;
+        }
+    }
+}
+#finalizar_compra{
+    display: flex;
+
+}
+#checkout_table{
+    width: 70%;
+    height: 100%;
+    background-color: white;
+    padding: 0px 100px 0px 100px;
+    border-collapse: collapse;
+    margin: 0px 40px;
+    tbody{
+        tr{
+            text-align: center;
+            border-bottom: 0.5px solid grey;
+        }
+    }
+}
+.checkout_product{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    img{
+        width: 100px;
+    }
+    div{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+        span{
+            color: gray;
+        }
+    }
+    
+}
+.checkout_quantity{
+    button{
+        width: 20px;
+        height: 20px;
+        border-radius: 2px;
+        padding: 0;
+    }
+}
+.checkout_data{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    width: 30%;
+    background-color: rgba(209, 209, 209, 0.284);
+    margin: 40px;
+    margin-top: 0;
+    div{
+        width: 100%;
+        display: flex;
+        font-family: 'SFPro Rounded';
+        font-weight: 300;
+        font-size: 24px;
+        color: rgb(61, 61, 61);
+    }
+}
+.checkout_total{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 30%;
+    border-bottom:  1px solid #ccc;
+    padding: 20px;
+    div{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+#discount_code{
+    padding: 20px;
+    flex-direction:  row;
+    input[type="text"] {
+        width: 80%;
+        text-align: left;
+        border-radius: 0px;
+        height: 50px;
+        &::placeholder {
+            color: #ccc;
+            padding: 20px;
+        }
+        &:valid{
+            padding: 20px;
+        }
+    }
+    width: 100%;
+    label{
+        font-size: 30px;
+        padding: 10px;
+    }
+    button{
+        width: 20%;
+        height: 50px;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+    }
+}
+.discount_message{
+    width: 100%;
+    font-size: 14px;
+    text-align: center;
+}
+.error{
+    color: red;
+}
+
+.success{
+    color: green; 
+}
+
+.discount_true{
+    text-decoration: line-through;
+}
+.discount{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+.total_price{
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+.finalizar_compra{
+    width: 150px;
+    height: 50px;
+    background-color: $color-resaltado;
+    align-self: center;
+    justify-content: end;
+    margin: 20px;
+}

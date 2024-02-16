@@ -20,6 +20,11 @@
     font-weight: 500;
     src: url(/fonts/SFPro/SF-Pro-Rounded-Semibold.otf);
 }
+@font-face {
+    font-family: 'SFPro Rounded';
+    font-weight: 300;
+    src: url(/fonts/SFPro/SF-Pro-Rounded-Medium.otf);
+}
 body{
     font-family: 'SFPro', sans-serif;
 }

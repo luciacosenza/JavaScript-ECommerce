@@ -4,6 +4,7 @@
 @import "base/typography";
 
 @import "components/buttons";
+@import "components/loader";
 
 @import "layout/header";
 @import "layout/cart";
@@ -11,6 +12,8 @@
 @import "layout/categories";
 @import "layout/cards_producto";
 @import "layout/products";
+@import "layout/checkout";
+
 
 footer {
     background-color: #333;

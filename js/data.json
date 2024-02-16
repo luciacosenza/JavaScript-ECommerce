@@ -1,0 +1,691 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "iPhone 15 Pro Max",
+            "capacity": "256 GB",
+            "color": "Blue Titanium",
+            "price": 1300,
+            "img": "../assets/iphones/iphone-15-pro-max-bt.png",
+            "stock": 7,
+            "category_id": 1
+        },
+        {
+            "id": 2,
+            "name": "iPhone 15 Pro Max",
+            "capacity": "256 GB",
+            "color": "Natural Titanium",
+            "price": 1300,
+            "img": "../assets/iphones/iphone-15-pro-max-nt.png",
+            "stock": 8,
+            "category_id": 1
+        },
+        {
+            "id": 3,
+            "name": "iPhone 15 Pro Max",
+            "capacity": "256 GB",
+            "color": "Black Titanium",
+            "price": 1300,
+            "img": "../assets/iphones/iphone-15-pro-max-black.png",
+            "stock": 10,
+            "category_id": 1
+        },
+        {
+            "id": 4,
+            "name": "iPhone 15 Pro Max",
+            "capacity": "512 GB",
+            "color": "Blue Titanium",
+            "price": 1500,
+            "img": "../assets/iphones/iphone-15-pro-max-bt.png",
+            "stock": 5,
+            "category_id": 1
+        },
+        {
+            "id": 5,
+            "name": "iPhone 15 Pro Max",
+            "capacity": "512 GB",
+            "color": "Black Titanium",
+            "price": 1500,
+            "img": "../assets/iphones/iphone-15-pro-max-black.png",
+            "stock": 3,
+            "category_id": 1
+        },
+        {
+            "id": 6,
+            "name": "iPhone 15 Pro Max",
+            "capacity": "512 GB",
+            "color": "White Titanium",
+            "price": 1500,
+            "img": "../assets/iphones/iphone-15-pro-max-wt.png",
+            "stock": 2,
+            "category_id": 1
+        },
+        {
+            "id": 7,
+            "name": "iPhone 15 Pro",
+            "capacity": "128 GB",
+            "color": "Natural Titanium",
+            "price": 1100,
+            "img": "../assets/iphones/iphone-15-pro-max-nt.png",
+            "stock": 8,
+            "category_id": 1
+        },
+        {
+            "id": 8,
+            "name": "iPhone 15 Pro",
+            "capacity": "128 GB",
+            "color": "Black Titanium",
+            "price": 1100,
+            "img": "../assets/iphones/iphone-15-pro-max-black.png",
+            "stock": 8,
+            "category_id": 1
+        },
+        {
+            "id": 9,
+            "name": "iPhone 15 Pro",
+            "capacity": "128 GB",
+            "color": "White Titanium",
+            "price": 1100,
+            "img": "../assets/iphones/iphone-15-pro-max-wt.png",
+            "stock": 7,
+            "category_id": 1
+        },
+        {
+            "id": 10,
+            "name": "iPhone 15 Pro",
+            "capacity": "256 GB",
+            "color": "Natural Titanium",
+            "price": 1200,
+            "img": "../assets/iphones/iphone-15-pro-max-nt.png",
+            "stock": 6,
+            "category_id": 1
+        },
+        {
+            "id": 11,
+            "name": "iPhone 15 Pro",
+            "capacity": "256 GB",
+            "color": "Black Titanium",
+            "price": 1200,
+            "img": "../assets/iphones/iphone-15-pro-max-black.png",
+            "stock": 9,
+            "category_id": 1
+        },
+        {
+            "id": 12,
+            "name": "iPhone 15",
+            "capacity": "128 GB",
+            "color": "Pink",
+            "price": 900,
+            "img": "../assets/iphones/iphone-15-pink.png",
+            "stock": 10,
+            "category_id": 1
+        },
+        {
+            "id": 13,
+            "name": "iPhone 15",
+            "capacity": "128 GB",
+            "color": "Blue",
+            "price": 900,
+            "img": "../assets/iphones/iphone-15-blue.png",
+            "stock": 11,
+            "category_id": 1
+        },
+        {
+            "id": 14,
+            "name": "iPhone 15",
+            "capacity": "128 GB",
+            "color": "Black",
+            "price": 900,
+            "img": "../assets/iphones/iphone-15-black.png",
+            "stock": 3,
+            "category_id": 1
+        },
+        {
+            "id": 15,
+            "name": "iPhone 15",
+            "capacity": "256 GB",
+            "color": "Pink",
+            "price": 1000,
+            "img": "../assets/iphones/iphone-15-pink.png",
+            "stock": 13,
+            "category_id": 1
+        },
+        {
+            "id": 16,
+            "name": "iPhone 15",
+            "capacity": "256 GB",
+            "color": "Yellow",
+            "price": 1000,
+            "img": "../assets/iphones/iphone-15-yellow.png",
+            "stock": 9,
+            "category_id": 1
+        },
+        {
+            "id": 17,
+            "name": "iPhone 15",
+            "capacity": "256 GB",
+            "color": "Green",
+            "price": 1000,
+            "img": "../assets/iphones/iphone-15-green.png",
+            "stock": 10,
+            "category_id": 1
+        },
+        {
+            "id": 18,
+            "name": "iPhone 15 Plus",
+            "capacity": "128 GB",
+            "color": "Pink",
+            "price": 1000,
+            "img": "../assets/iphones/iphone-15-plus-pink.png",
+            "stock": 5,
+            "category_id": 1
+        },
+        {
+            "id": 19,
+            "name": "iPhone 15 Plus",
+            "capacity": "128 GB",
+            "color": "Yellow",
+            "price": 1000,
+            "img": "../assets/iphones/iphone-15-plus-yellow.png",
+            "stock": 12,
+            "category_id": 1
+        },
+        {
+            "id": 20,
+            "name": "iPhone 15 Plus",
+            "capacity": "256 GB",
+            "color": "Green",
+            "price": 1100,
+            "img": "../assets/iphones/iphone-15-plus-green.png",
+            "stock": 7,
+            "category_id": 1
+        },
+        {
+            "id": 21,
+            "name": "iPhone 15 Plus",
+            "capacity": "256 GB",
+            "color": "Black",
+            "price": 1100,
+            "img": "../assets/iphones/iphone-15-plus-black.png",
+            "stock": 6,
+            "category_id": 1
+        },
+        {
+            "id": 22,
+            "name": "iPhone 15 Plus",
+            "capacity": "512 GB",
+            "color": "Blue",
+            "price": 1300,
+            "img": "../assets/iphones/iphone-15-plus-blue.png",
+            "stock": 9,
+            "category_id": 1
+        },
+        {
+            "id": 23,
+            "name": "iPhone 14",
+            "capacity": "128 GB",
+            "color": "Purple",
+            "price": 800,
+            "img": "../assets/iphones/iphone-14-purple.png",
+            "stock": 4,
+            "category_id": 1
+        },
+        {
+            "id": 24,
+            "name": "iPhone 13",
+            "capacity": "128 GB",
+            "color": "Starlight",
+            "price": 700,
+            "img": "../assets/iphones/iphone-13-starlight.png",
+            "stock": 3,
+            "category_id": 1
+        },
+        {
+            "id": 25,
+            "name": "iPhone SE 3rd gen",
+            "capacity": "128 GB",
+            "color": "Red",
+            "price": 600,
+            "img": "../assets/iphones/iphone-se-red.png",
+            "stock": 5,
+            "category_id": 1
+        },
+        {
+            "id": 26,
+            "name": "MacBook Air M1",
+            "capacity": "256 GB",
+            "color": "Silver",
+            "price": 999,
+            "img": "../assets/mac/macbook-air-m1-silver.jpeg",
+            "stock": 15,
+            "category_id": 2
+        },
+        {
+            "id": 27,
+            "name": "MacBook Air M1",
+            "capacity": "512 GB",
+            "color": "Gold",
+            "price": 1299,
+            "img": "../assets/mac/macbook-air-m1-gold.jpeg",
+            "stock": 10,
+            "category_id": 2
+        },
+        {
+            "id": 28,
+            "name": "MacBook Air M1",
+            "capacity": "128 GB",
+            "color": "Space Gray",
+            "price": 899,
+            "img": "../assets/mac/macbook-air-m1-space-gray.jpeg",
+            "stock": 13,
+            "category_id": 2
+        },
+        {
+            "id": 29,
+            "name": "MacBook Air M2",
+            "capacity": "512 GB",
+            "color": "Starlight",
+            "price": 1499,
+            "img": "../assets/mac/macbook-air-m2-starlight.jpeg",
+            "stock": 10,
+            "category_id": 2
+        },
+        {
+            "id": 30,
+            "name": "MacBook Air M2",
+            "capacity": "1 TB",
+            "color": "Silver",
+            "price": 1799,
+            "img": "../assets/mac/macbook-air-m2-silver.jpeg",
+            "stock": 8,
+            "category_id": 2
+        },
+        {
+            "id": 31,
+            "name": "MacBook Air M2",
+            "capacity": "2 TB",
+            "color": "Midnight",
+            "price": 2099,
+            "img": "../assets/mac/macbook-air-m2-midnight.jpeg",
+            "stock": 9,
+            "category_id": 2
+        },
+        {
+            "id": 32,
+            "name": "MacBook Air M2",
+            "capacity": "4 TB",
+            "color": "Space Gray",
+            "price": 2799,
+            "img": "../assets/mac/macbook-air-m2-space-gray.jpeg",
+            "stock": 6,
+            "category_id": 2
+        },
+        {
+            "id": 33,
+            "name": "MacBook Pro M1 13\"",
+            "capacity": "512 GB",
+            "color": "Silver",
+            "price": 1499,
+            "img": "../assets/mac/macbook-pro-13-m1-silver.jpeg",
+            "stock": 12,
+            "category_id": 2
+        },
+        {
+            "id": 34,
+            "name": "MacBook Pro M1 16\"",
+            "capacity": "1 TB",
+            "color": "Silver",
+            "price": 2399,
+            "img": "../assets/mac/macbook-pro-16-m1-silver.jpeg",
+            "stock": 5,
+            "category_id": 2
+        },
+        {
+            "id": 35,
+            "name": "MacBook Pro M2 13\"",
+            "capacity": "256 GB",
+            "color": "Space Gray",
+            "price": 1299,
+            "img": "../assets/mac/macbook-pro-13-M2-space-gray.jpeg",
+            "stock": 8,
+            "category_id": 2
+        },
+        {
+            "id": 36,
+            "name": "MacBook Pro M2 16\"",
+            "capacity": "1 TB",
+            "color": "Silver",
+            "price": 1999,
+            "img": "../assets/mac/macbook-pro16-m2-silver.jpeg",
+            "stock": 9,
+            "category_id": 2
+        },
+        {
+            "id": 37,
+            "name": "iMac M1 24\"",
+            "capacity": "512 GB",
+            "color": "Pink",
+            "price": 1799,
+            "img": "../assets/mac/imac-m1-24-pink.jpeg",
+            "stock": 11,
+            "category_id": 2
+        },
+        {
+            "id": 38,
+            "name": "iMac M1 24\"",
+            "capacity": "4 TB",
+            "color": "Silver",
+            "price": 3199,
+            "img": "../assets/mac/imac-24-m1-silver.jpeg",
+            "stock": 4,
+            "category_id": 2
+        },
+        {
+            "id": 39,
+            "name": "iMac M1 24\"",
+            "capacity": "1 TB",
+            "color": "Blue",
+            "price": 1699,
+            "img": "../assets/mac/imac-24-m1-blue.jpeg",
+            "stock": 6,
+            "category_id": 2
+        },
+        {
+            "id": 40,
+            "name": "iMac M1 24\"",
+            "capacity": "2 TB",
+            "color": "Green",
+            "price": 2199,
+            "img": "../assets/mac/imac-24-m1-green.jpeg",
+            "stock": 7,
+            "category_id": 2
+        },
+        {
+            "id": 41,
+            "name": "Mac Studio M1 MAX",
+            "capacity": "512 GB",
+            "color": "",
+            "price": 2599,
+            "img": "../assets/mac/mac-studio-m1-max.jpeg",
+            "stock": 5,
+            "category_id": 2
+        },
+        {
+            "id": 42,
+            "name": "Mac Mini M2",
+            "capacity": "256 GB",
+            "color": "",
+            "price": 1199,
+            "img": "../assets/mac/mac-mini-m2.jpeg",
+            "stock": 14,
+            "category_id": 2
+        },
+        {
+            "id": 43,
+            "name": "Mac Mini M2",
+            "capacity": "512 GB",
+            "color": "",
+            "price": 2399,
+            "img": "../assets/mac/mac-mini-m2.jpeg",
+            "stock": 3,
+            "category_id": 2
+        },
+        {
+            "id": 44,
+            "name": "Mac Pro M2 ULTRA",
+            "capacity": "1 TB",
+            "color": "",
+            "price": 8000,
+            "img": "../assets/mac/mac-pro.jpeg",
+            "stock": 12,
+            "category_id": 2
+        },
+        {
+            "id": 45,
+            "name": "iPad 10th",
+            "capacity": "64 GB",
+            "color": "Blue",
+            "price": 500,
+            "img": "../assets/ipads/ipad-10-blue.png",
+            "stock": 10,
+            "category_id": 3
+        },
+        {
+            "id": 46,
+            "name": "iPad 10th",
+            "capacity": "256 GB",
+            "color": "Silver",
+            "price": 700,
+            "img": "../assets/ipads/ipad-10-silver.png",
+            "stock": 8,
+            "category_id": 3
+        },
+        {
+            "id": 47,
+            "name": "iPad 10th",
+            "capacity": "64 GB",
+            "color": "Pink",
+            "price": 500,
+            "img": "../assets/ipads/ipad-10-pink.png",
+            "stock": 6,
+            "category_id": 3
+        },
+        {
+            "id": 48,
+            "name": "iPad 10th",
+            "capacity": "256 GB",
+            "color": "Yellow",
+            "price": 700,
+            "img": "../assets/ipads/ipad-10-yellow.png",
+            "stock": 6,
+            "category_id": 3
+        },
+        {
+            "id": 49,
+            "name": "iPad Air",
+            "capacity": "256 GB",
+            "color": "Space Gray",
+            "price": 900,
+            "img": "../assets/ipads/ipad-air-space-gray.png",
+            "stock": 10,
+            "category_id": 3
+        },
+        {
+            "id": 50,
+            "name": "iPad Air",
+            "capacity": "256 GB",
+            "color": "Pink",
+            "price": 900,
+            "img": "../assets/ipads/ipad-air-pink.png",
+            "stock": 6,
+            "category_id": 3
+        },
+        {
+            "id": 51,
+            "name": "iPad Air",
+            "capacity": "64 GB",
+            "color": "Purple",
+            "price": 700,
+            "img": "../assets/ipads/ipad-air-purple.png",
+            "stock": 7,
+            "category_id": 3
+        },
+        {
+            "id": 52,
+            "name": "iPad Air",
+            "capacity": "64 GB",
+            "color": "Starlight",
+            "price": 700,
+            "img": "../assets/ipads/ipad-air-starlight.png",
+            "stock": 7,
+            "category_id": 3
+        },
+        {
+            "id": 53,
+            "name": "iPad Mini",
+            "capacity": "256 GB",
+            "color": "Purple",
+            "price": 750,
+            "img": "../assets/ipads/ipad-mini-purple.png",
+            "stock": 7,
+            "category_id": 3
+        },
+        {
+            "id": 54,
+            "name": "iPad Mini",
+            "capacity": "256 GB",
+            "color": "Starlight",
+            "price": 750,
+            "img": "../assets/ipads/ipad-mini-starlight.png",
+            "stock": 5,
+            "category_id": 3
+        },
+        {
+            "id": 55,
+            "name": "iPad Mini",
+            "capacity": "256 GB",
+            "color": "Pink",
+            "price": 750,
+            "img": "../assets/ipads/ipad-mini-pink.png",
+            "stock": 8,
+            "category_id": 3
+        },
+        {
+            "id": 56,
+            "name": "iPad Mini",
+            "capacity": "64 GB",
+            "color": "Space Gray",
+            "price": 600,
+            "img": "../assets/ipads/ipad-mini-space-gray.png",
+            "stock": 5,
+            "category_id": 3
+        },
+        {
+            "id": 57,
+            "name": "iPad Mini",
+            "capacity": "64 GB",
+            "color": "Pink",
+            "price": 600,
+            "img": "../assets/ipads/ipad-mini-pink.png",
+            "stock": 5,
+            "category_id": 3
+        },
+        {
+            "id": 58,
+            "name": "iPad Pro 11\"",
+            "capacity": "256 GB",
+            "color": "Space Gray",
+            "price": 1000,
+            "img": "../assets/ipads/ipad-pro-space-gray.png",
+            "stock": 4,
+            "category_id": 3
+        },
+        {
+            "id": 59,
+            "name": "iPad Pro 11\"",
+            "capacity": "128 GB",
+            "color": "Silver",
+            "price": 900,
+            "img": "../assets/ipads/ipad-pro-silver.png",
+            "stock": 7,
+            "category_id": 3
+        },
+        {
+            "id": 60,
+            "name": "iPad Pro 12.9\"",
+            "capacity": "128 GB",
+            "color": "Silver",
+            "price": 1200,
+            "img": "../assets/ipads/ipad-pro-silver.png",
+            "stock": 2,
+            "category_id": 3
+        },
+        {
+            "id": 61,
+            "name": "iPad Pro 12.9\"",
+            "capacity": "512 GB",
+            "color": "Space Gray",
+            "price": 1600,
+            "img": "../assets/ipads/ipad-pro-space-gray.png",
+            "stock": 2,
+            "category_id": 3
+        },
+        {
+            "id": 62,
+            "name": "iPad Pro 11\"",
+            "capacity": "1 TB",
+            "color": "Space Gray",
+            "price": 1700,
+            "img": "../assets/ipads/ipad-pro-space-gray.png",
+            "stock": 3,
+            "category_id": 3
+        },
+        {
+            "id": 63,
+            "name": "iPad Pro 12.9\"",
+            "capacity": "2 TB",
+            "color": "Silver",
+            "price": 2400,
+            "img": "../assets/ipads/ipad-pro-silver.png",
+            "stock": 5,
+            "category_id": 3
+        },
+        {
+            "id": 64,
+            "name": "Apple Watch Series 8 Aluminio",
+            "capacity": "32 GB",
+            "color": "Midnight",
+            "price": 400,
+            "img": "../assets/watch/watch8-midnight-al.png",
+            "stock": 3,
+            "category_id": 4
+        },
+        {
+            "id": 65,
+            "name": "Apple Watch Series 8 Aluminio",
+            "capacity": "32 GB",
+            "color": "Midnight",
+            "price": 400,
+            "img": "../assets/watch/watch8-midnight-al.png",
+            "stock": 3,
+            "category_id": 4
+        }
+    ],
+
+    
+    "categories": [
+        {
+            "name": "Iphone",
+            "img": "./assets/iphone.png",
+            "description": "iPhone",
+            "category_id" : 1
+        },
+        {
+            "name": "Mac",
+            "img": "./assets/macbook.png",
+            "description": "MacBook",
+            "category_id": 2
+        },
+        {
+            "name": "iPad",
+            "img": "./assets/ipad.png",
+            "description": "iPad",
+            "category_id": 3
+        },
+        {
+            "name": "Watch",
+            "img": "./assets/watch.png",
+            "description": "Apple Watch",
+            "category_id": 4
+        },
+        {
+            "name": "Accesorios",
+            "img": "./assets/accesories.png",
+            "description": "Cargador usb-c",
+            "category_id": 5
+        }
+    ]
+    
+}
+
+
