@@ -41,7 +41,7 @@ const sinEspacios = (cadena) => {
 async function getProducts() {
     hideLoader();
     try {
-        const endPoint = '/data.json';
+        const endPoint = bodyIndex ? 'data.json' : '../data.json';
         const response = await fetch(endPoint);
         const data = await response.json();
         const { products, categories } = data;
