@@ -17,6 +17,7 @@ const bodyProductos = document.querySelector('#productos');
 
 let productos;
 let categorias;
+let storedProducts;
 
 const storedCart = JSON.parse(localStorage.getItem('cart') ?? '[]');
 const cart = new Cart( storedCart );
@@ -164,6 +165,15 @@ const ordenarSegun = (criterio, list) => {
     renderProducts(list);
 }
 
+//muestra un mensaje de error
+function showError(message) {
+    Swal.fire({
+        title: 'Error!',
+        text: message,
+        icon: 'error',
+        confirmButtonText: 'Aceptar'
+    });
+}
 // <-------------------------OBTENER PRODUCTOS DEL JSON Y RENDERIZAR------------------------->
 async function getProducts() {
     hideLoader();
@@ -183,7 +193,8 @@ async function getProducts() {
         } else {
             categoriaGuardada = JSON.parse(localStorage.getItem('categoriaActiva')) ?? productos;
             filtroGuardado = JSON.parse(localStorage.getItem('filtroActivo')) ?? categoriaGuardada;
-            
+            storedProducts = JSON.parse(localStorage.getItem('products')) ?? productos;
+
             const tituloGuardado = localStorage.getItem('titulo') ?? 'Todos los productos';
             renderProducts(filtroGuardado);
             renderTitle(tituloGuardado);
@@ -204,6 +215,8 @@ async function getProducts() {
 }
 
 getProducts();
+
+
 
 // <-----------------------------------EVENT LISTENERS----------------------------------->
 // <--------Event listeners de INDEX.HMTL-------->
@@ -255,8 +268,12 @@ if ( ! bodyIndex ) {
         const btn = e.target
         if ( btn.classList.contains('btn_add_to_cart')){
             const ID = e.target.id;
-            const product = productos.find( p => p.id == ID ) ;
-            cart.addToCart(product);
+            const product = storedProducts.find( p => p.id == ID ) ;
+            if (product.stock > 0 ) {
+                cart.addToCart(product);
+                product.stock -=1
+                localStorage.setItem('products', JSON.stringify(storedProducts));
+            }  else showError('Insuficiente stock');
         }
     });
     // Añado un event listener al input para buscar productos
@@ -296,15 +313,37 @@ if ( ! bodyIndex ) {
 //Añado un event listener al icono del carrito para que se muestre/esconda
 cartBtn.addEventListener('click', ()  => toggleCart());
 
-// Al presionar el icono de "basura", elimina el producto del carrito
 cartProductsContainer.addEventListener('click', e =>{
+    const product = e.target.parentElement.parentElement
+    const id = product.id;
+    const index = storedProducts.findIndex(p => p.id == id)
+    // Al presionar el icono de "basura", elimina el producto del carrito
     if (e.target.classList.contains('remove_item')){
-        const product = e.target;
-        const id = product.id;
-        console.log(cart);
-        cart.removeFromCart( id );
+        storedProducts[index].stock += 1;
+        cart.removeAllUnits( id );
     }
-}); 
+    // agregar / quitar unidades de producto
+    if (e.target.classList.contains('add')){
+        const product = storedProducts.find( p => p.id == id ) ;
+        if (product.stock > 0 ) {
+            cart.addToCart(product);
+            product.stock -=1
+            localStorage.setItem('products', JSON.stringify(storedProducts));
+        }else showError('Insuficiente stock');
+    }
+    if (e.target.classList.contains('reduce')){
+            cart.removeFromCart(id);
+            storedProducts[index].stock += 1;
+    }
+    if (e.target.id == 'vaciar_carrito'){
+        cart.cart.forEach( item => {
+            const index = storedProducts.findIndex( prod => prod.id == item.id);
+            index != -1  ? storedProducts[index].stock += item.units : null;
+        }) 
+        cart.cleanCart();
+    }
 
+    localStorage.setItem('products', JSON.stringify(storedProducts));
+}); 
 
 

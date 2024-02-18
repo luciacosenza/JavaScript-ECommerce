@@ -52,7 +52,7 @@ function renderCheckoutProducts(){
             <td class="checkout_product">
                 <img src=${img} alt="${name}">
                 <div>
-                    <p class="product_name">${name} (${capacity})</p>
+                    <p class="product_name">${name} ${capacity}</p>
                     <span>${color}</span>
                 </div>
             </td>

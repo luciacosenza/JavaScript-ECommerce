@@ -123,6 +123,11 @@ button:hover a {
   color: #fff;
 }
 
+#vaciar_carrito {
+  color: black;
+  border: 1px solid gray;
+}
+
 .loader {
   width: 16px;
   height: 16px;
@@ -277,14 +282,13 @@ nav h2 {
   position: absolute;
   z-index: 100;
   right: 0px;
-  top: 12%;
+  top: 11%;
   width: 500px;
   height: 100vh;
   min-height: 10px;
   background-color: #fff;
   color: rgb(30, 29, 29);
   padding: 20px;
-  border-radius: 10px;
   border: 0.5px solid grey;
   animation-name: slide-in-right;
   animation-duration: 0.5s;
@@ -347,6 +351,24 @@ nav h2 {
   color: grey;
   text-align: right;
 }
+.cart__product .units {
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-right: 20px;
+}
+.cart__product .units button {
+  vertical-align: middle;
+  background-color: rgb(255, 255, 255);
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  color: black;
+  margin: 0px 10px;
+  padding: 0px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
 
 .color {
   width: 80%;
@@ -358,6 +380,14 @@ nav h2 {
   cursor: pointer;
   align-self: center;
   justify-content: center;
+}
+
+.cart_buttons {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 20px;
 }
 
 @keyframes swing-in-top-fwd {

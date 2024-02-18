@@ -14,27 +14,35 @@ class Cart{
         const cartList = document.querySelector('.products_list');
         const cartLength = document.querySelectorAll('.cart_length');
         const checkoutBtn = document.querySelector('#checkout_btn');
+        const emptyCartBtn = document.querySelector('#vaciar_carrito');
 
-        if (this.cart.length !== 0){
+        if (this.cart.length != 0){
             cartList.innerHTML = '';
             spanTotal.innerHTML = '';
             cartLength.textContent = '0';
+            spanTotal.style.display = 'inline-block';
             for (const product of this.cart) {
                 const {id, name, price, color, img, capacity, units} = product
                 const cartProduct = document.createElement('div');
                 cartProduct.classList.add(`cart__product`);
+                cartProduct.id = id;
                 cartProduct.innerHTML = /*HTML*/`
+                    <div class = "units">
+                        <button class="reduce">-</button>
+                            ${units}
+                        <button class="add">+</button>
+                    </div>
                     <img src="${img}" alt="${name}">
                     <div>
                         <div>
                             <p>${name}</p>
-                            <span class="color">${color}</span><span>${capacity}GB</span>
+                            <span class="color">${color}</span><span>${capacity}</span>
                         </div>
                         <div class= "price__quantity">
                             <span>$ ${units*price}</span>
                             <span class="prod_cant">${units}x $${price}</span>
                         </div>
-                        <i class="fa-regular fa-trash-can remove_item" id=${id}></i>
+                        <i class="fa-regular fa-trash-can remove_item"></i>
                     </div>
                     
                 `;
@@ -42,11 +50,14 @@ class Cart{
             }
             spanTotal.innerHTML = `${this.getTotal()}`;
             cartLength.forEach( item => item.textContent = `${this.getCount()}`);
+            checkoutBtn.style.display = 'block';
+            emptyCartBtn.style.display = 'block';
         }else{
             cartList.innerHTML = /*HTML*/`<p>No hay productos en su carrito :(</p>`;
             cartLength.forEach(item => item.textContent = `${this.cart.length}`);
             spanTotal.style.display = 'none';
             checkoutBtn.style.display = 'none';
+            emptyCartBtn.style.display = 'none';
         }
     }
 
@@ -55,41 +66,36 @@ class Cart{
         const {id, name, img, price, color, capacity} = product;
         const index = this.cart.findIndex(  item => item.id === id );
         (index === -1) ? this.cart.push( {id, name, img, price, color, capacity, units: 1} ) :  this.cart[index].units += 1;
-        /*  if(product.stock > 0){
-
-            this.cart.push(product);
-            this.total += product.price;
-            product.stock -=1;
-
-            // para actualizar el stock del producto
-            /* const index = productList.findIndex( p => p === product);
-            if (index != -1) {
-                productList[index].stock = product.stock;
-                localStorage.setItem(`products_${category}`,  JSON.stringify(productList));
-            } */
-
-            localStorage.setItem('cart', JSON.stringify(this.cart));
             
-            this.renderCart();
-            
-            this.showToast(`${name} ${color} ${capacity} se ha agregado al carrito`);
-
-        }/* else {
-            this.showError(`${product.name} ${product.color} ${product.capacity} está agotado`)
-        } */
+        localStorage.setItem('cart', JSON.stringify(this.cart));
+        this.renderCart();
+        this.showToast(`${name} ${color} ${capacity} se ha agregado al carrito`);
+    }
 
     removeFromCart(productID){
         const index = this.cart.findIndex(p => ( p.id ==  productID) );
         const product = this.cart[index];
         const {name, color, capacity} = product;
         product.units > 1 ? product.units -= 1 : this.cart.splice(index , 1);
-
         localStorage.setItem('cart', JSON.stringify(this.cart));
-
         this.renderCart();
         this.showToast(`${name} ${color} ${capacity} se ha eliminado del carrito`);
+    }
+    
+    removeAllUnits( productID ){
+        const index = this.cart.findIndex(p => ( p.id ==  productID) );
+        const product = this.cart[index];
+        const {name, color, capacity} = product;
+        this.cart.splice(index , 1);
+        localStorage.setItem('cart', JSON.stringify(this.cart));
+        this.renderCart();
+        this.showToast(`${name} ${color} ${capacity} se ha eliminado del carrito`);
+    }
 
-    }    
+    cleanCart( ){
+        this.cart = [];
+        this.renderCart();
+    }
     
     getCount(){
         const count = this.cart.reduce(  (cant, product) => {  return cant + product.units   }, 0  )
