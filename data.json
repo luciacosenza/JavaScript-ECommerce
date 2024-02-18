@@ -642,13 +642,163 @@
         },
         {
             "id": 65,
-            "name": "Apple Watch Series 8 Aluminio",
+            "name": "Apple Watch Ultra Titanio",
             "capacity": "32 GB",
-            "color": "Midnight",
-            "price": 400,
-            "img": "../assets/watch/watch8-midnight-al.png",
+            "color": "Starlight",
+            "price": 700,
+            "img": "../assets/watch/watch-ultra-starlight-ti.jpeg",
             "stock": 3,
             "category_id": 4
+        },
+        {
+            "id": 66,
+            "name": "Apple Watch Ultra Titanio",
+            "capacity": "32 GB",
+            "color": "Midnight",
+            "price": 700,
+            "img": "../assets/watch/watch-ultra-midnight-ti.png",
+            "stock": 3,
+            "category_id": 4
+        },
+        {
+            "id": 67,
+            "name": "Apple Watch Series 8 Aluminio",
+            "capacity": "32 GB",
+            "color": "Starlight",
+            "price": 400,
+            "img": "../assets/watch/watch8-starlight-al.jpeg",
+            "stock": 3,
+            "category_id": 4
+        },
+        {
+            "id": 68,
+            "name": "Apple Watch SE 2022",
+            "capacity": "32 GB",
+            "color": "Midnight" ,
+            "price": 300,
+            "img": "../assets/watch/watch-se-midnight.png",
+            "stock": 3,
+            "category_id": 4
+        },
+        {
+            "id": 69,
+            "name": "Apple Watch SE 2022",
+            "capacity": "32 GB",
+            "color": "Midnight" ,
+            "price": 300,
+            "img": "../assets/watch/watch-se-starlight.jpeg",
+            "stock": 3,
+            "category_id": 4
+        },
+        {
+            "id": 70,
+            "name": "Apple Watch SE 2022",
+            "capacity": "32 GB",
+            "color": "Silver" ,
+            "price": 300,
+            "img": "../assets/watch/watch-se-silver.jpeg",
+            "stock": 3,
+            "category_id": 4
+        },
+        {
+            "id": 71,
+            "name": "Apple Watch Series 9 Aluminio",
+            "capacity": "32 GB",
+            "color": "Pink" ,
+            "price": 500,
+            "img": "../assets/watch/watch9-pink-al.jpeg",
+            "stock": 3,
+            "category_id": 4
+        },
+        {
+            "id": 72,
+            "name": "Apple Watch Series 9 Aluminio",
+            "capacity": "32 GB",
+            "color": "Red" ,
+            "price": 500,
+            "img": "../assets/watch/watch9-red-al.jpeg",
+            "stock": 3,
+            "category_id": 4
+        },
+        {
+            "id": 73,
+            "name": "Apple Watch Series 9 Stainless Steel",
+            "capacity": "32 GB",
+            "color": "Gold" ,
+            "price": 700,
+            "img": "../assets/watch/watch9-gold-ss.png",
+            "stock": 3,
+            "category_id": 4
+        },
+        {
+            "id": 74,
+            "name": "Apple Watch Series 9 Stainless Steel",
+            "capacity": "32 GB",
+            "color": "Graphite" ,
+            "price": 700,
+            "img": "../assets/watch/watch9-graphite-ss.png",
+            "stock": 3,
+            "category_id": 4
+        },
+        {
+            "id": 75,
+            "name": "AirPods 2",
+            "capacity": "",
+            "color": "" ,
+            "price": 170,
+            "img": "../assets/acc/airpods-2.jpeg",
+            "stock": 10,
+            "category_id": 5
+        },
+        {
+            "id": 76,
+            "name": "AirPods 3",
+            "capacity": "",
+            "color": "" ,
+            "price": 210,
+            "img": "../assets/acc/airpods-3.jpeg",
+            "stock": 7,
+            "category_id": 5
+        },
+        {
+            "id": 76,
+            "name": "AirPods Pro 2",
+            "capacity": "",
+            "color": "" ,
+            "price": 300,
+            "img": "../assets/acc/airpods-pro-2.jpeg",
+            "stock": 5,
+            "category_id": 5
+        },
+        {
+            "id": 77,
+            "name": "AirPods Max",
+            "capacity": "",
+            "color": "Space Gray" ,
+            "price": 100,
+            "img": "../assets/acc/airpods-max-gray.jpeg",
+            "stock": 4,
+            "category_id": 5
+        },
+        {
+            "id": 78,
+            "name": "AirPods Max",
+            "capacity": "",
+            "color": "Green" ,
+            "price": 100,
+            "img": "../assets/acc/airpods-max-green.jpeg",
+            "stock": 4,
+            "category_id": 5
+        },
+        {
+            "id": 79,
+            "name": "AirPods Max",
+            "capacity": "",
+            "color": "Silver" ,
+            "price": 100,
+            "img": "../assets/acc/airpods-max-silver.jpeg",
+            "stock": 4,
+            "category_id": 5
         }
     ],
 

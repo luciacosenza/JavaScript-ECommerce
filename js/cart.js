@@ -23,18 +23,20 @@ class Cart{
                 const {id, name, price, color, img, capacity, units} = product
                 const cartProduct = document.createElement('div');
                 cartProduct.classList.add(`cart__product`);
-                cartProduct.id = id;
                 cartProduct.innerHTML = /*HTML*/`
                     <img src="${img}" alt="${name}">
                     <div>
                         <div>
                             <p>${name}</p>
-                            <span>${units*price}</span>
-                            <span>${units}x $${price}</span>
+                            <span class="color">${color}</span><span>${capacity}GB</span>
                         </div>
-                        <span class="color">${color}</span><span>${capacity}GB</span>
+                        <div class= "price__quantity">
+                            <span>$ ${units*price}</span>
+                            <span class="prod_cant">${units}x $${price}</span>
+                        </div>
+                        <i class="fa-regular fa-trash-can remove_item" id=${id}></i>
                     </div>
-                    <i class="fa-regular fa-trash-can remove_item"></i>
+                    
                 `;
                 cartList.appendChild(cartProduct);
             }

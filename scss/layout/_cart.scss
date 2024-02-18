@@ -27,12 +27,14 @@
     animation-duration: 0.5s;
     font-family: 'SFPro Rounded';
     h5{
+        font-size: 24px;
         width: 100%;;
         text-align: left;
         border-bottom: 0.5px solid grey;
         padding: 15px;
     }
     h6{
+        font-size: 20px;
         padding: 20px;
         margin-right: 20px;
         width: 100%;
@@ -59,12 +61,26 @@
     div{
         width: 100%;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: space-between;
         div{
-            flex-direction: row;
-            justify-content: space-between;
+            flex-direction: column;
         }
-
+        .price__quantity{
+            display: flex;
+            width: 100%;
+            height: 100%;
+            align-items: start;
+            margin-right: 10px;
+            span{
+                text-align: right;
+                width: 100%;
+            }
+            .prod_cant{
+                color: grey;
+                text-align: right;
+            }
+        }
     }
 }
 .color{
@@ -75,6 +91,8 @@
 
 .remove_item{
     cursor: pointer;
+    align-self: center;
+    justify-content: center;
 }
 @keyframes swing-in-top-fwd {
     0% {

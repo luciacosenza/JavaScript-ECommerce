@@ -21,72 +21,8 @@ let categorias;
 const storedCart = JSON.parse(localStorage.getItem('cart') ?? '[]');
 const cart = new Cart( storedCart );
 
-const filtrarProductos = (lista, id) => {
-    return lista.filter( item => item.category_id == id);
-}
 
-const showLoader = () => {loader.style.display = 'flex'};
-const hideLoader = () => { loader.style.display = 'none'};
-const cleanContainer = () => { productsContainer.innerHTML =''; }
-const toggleSearch = () => {
-    searchInput.style.display =  searchInput.style.display === "none" ? "block": "none";
-}
-const toggleCart = () => {
-    cartProductsContainer.style.display = (cartProductsContainer.style.display === 'none') ? 'flex': 'none' ;
-}
-const sinEspacios = (cadena) => {
-    return cadena.replace(/\s/g, ''); 
-}
-// obtener productos del json
-async function getProducts() {
-    hideLoader();
-    try {
-        const endPoint = bodyIndex ? 'data.json' : '../data.json';
-        const response = await fetch(endPoint);
-        const data = await response.json();
-        const { products, categories } = data;
-        let filtroGuardado;
-        let categoriaGuardada;
-        productos = products;
-        categorias = categories;
-
-        if ( bodyIndex ) {
-            renderCategories(categorias);
-        } else {
-            if (document.referrer){
-                const urlParams = new URLSearchParams(window.location.search);
-                const id = urlParams.get('id'); 
-                id != 'todos' ? filtro = filtrarProductos(productos, id) : filtro = productos;
-                categoriaGuardada =  filtro;
-                filtroGuardado = filtro;
-                const titulo = categorias.find( c => c.category_id == id)?  categorias.find( c => c.category_id == id).name : 'Todos los productos'
-                localStorage.setItem('titulo',  titulo);
-            } else {
-                categoriaGuardada = JSON.parse(localStorage.getItem('categoriaActiva')) ?? productos;
-                filtroGuardado = JSON.parse(localStorage.getItem('filtroActivo')) ?? categoriaGuardada;
-            }
-            const tituloGuardado = localStorage.getItem('titulo') ?? 'Todos los productos';
-            renderProducts(filtroGuardado);
-            renderTitle(tituloGuardado);
-            renderFilterButtons(categoriaGuardada);
-            renderNav(categorias);
-        }
-        
-        
-    } catch (error){
-        console.log(error);
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Ocurrió un error al cargar los datos!",
-        });
-    } finally {
-        hideLoader(); 
-    }
-    
-}
-
-
+//<-------------------------------------UI------------------------------------->
 // Renderiza las categorias en el index
 const renderCategories = (list) => {
     for( const category of list){
@@ -95,12 +31,11 @@ const renderCategories = (list) => {
             <img src="${category.img}" alt="${category.description}">
             <div class="category_details">
                 <h2>${category.name}</h2>
-                <button><a href="./pages/products.html">Ver más ></a></button>
+                <button id="${category.category_id}"><a class="category_index_btn" id="${category.category_id}" href="./pages/products.html">Ver más ></a></button>
             </div>
         </div>`
     }
 }
-
 // Renderiza los productos
 const renderProducts = ( products ) => {
     cleanContainer();
@@ -116,29 +51,67 @@ const renderProducts = ( products ) => {
     }
     renderLength(products);
 }
-
 // Renderiza la barra de navegación
 const renderNav = ( categories ) => {
-    navCategories.innerHTML += //html
-        `<li class="nav_btn" id="todos">Ver todos</li>` ;
-    for (const item of categories)  {
-        navCategories.innerHTML +=//html
-        `<li class="nav_btn" id="${item.category_id}">${item.name}</li> `;
+    if( !bodyIndex ) {
+        navCategories.innerHTML += //html
+            `<li class="nav_btn" id="0">All</li>` ;
+            for (const item of categories)  {
+                navCategories.innerHTML +=//html
+                `<li class="nav_btn" id="${item.category_id}">${item.name}</li> `;
+            }
+    } else {
+        navCategories.innerHTML += //html
+            `<li class="nav_btn" id="0"><a href ="./pages/products.html">All</a></li>` ;
+            for (const item of categories)  {
+                navCategories.innerHTML +=//html
+                `<li><a class="nav_btn" id="${item.category_id}" href="./pages/products.html">${item.name}</a></li> `;
+            }
     }
-
 }
 // Renderiza el titulo principal
 const renderTitle = ( name ) => {
     titulo.innerText = name;
 }
-
 // Renderiza la cantidad de articulos que se muestran
 const renderLength = (productList) => {
     let total = productList.length;
     spanCantidad.innerText= `${total}`;
 }
+// renderiza un lista con los modelos en la seccion filtrar
+const renderFilterButtons = (productList) =>{
+    modelNames = extractNames(productList);
+    seccionFiltroModelos.innerHTML = '';
+    seccionFiltroModelos.innerHTML += /* HTML */ `<button class="filtro-btn">Todos los modelos</button>`
+    for (const modelo of modelNames){
+        seccionFiltroModelos.innerHTML+=/* HTML */`<button class="filtro-btn">${modelo}</button>`
+    }
+}
 
-// Busca un producto en la lista de productos
+//<----------------------------------------AUXILIARES---------------------------------------->
+//filtra los productos segun el id de su categoria
+const filtrarPorID = (lista, id) => {
+    return lista.filter( item => item.category_id == id);
+}
+// muestra el loader
+const showLoader = () => {loader.style.display = 'flex'};
+// esconde el loader
+const hideLoader = () => { loader.style.display = 'none'};
+// limpia el contenedor de los productos
+const cleanContainer = () => { productsContainer.innerHTML =''; }
+// muestra / esconde el input de busqueda
+const toggleSearch = () => {
+    searchInput.style.display =  searchInput.style.display === "none" ? "block": "none";
+}
+// muestra / esconde el carrito
+const toggleCart = () => {
+    cartProductsContainer.style.display = (cartProductsContainer.style.display === 'none') ? 'flex': 'none' ;
+}
+// quita los espacios de los strings
+const sinEspacios = (cadena) => {
+    return cadena.replace(/\s/g, ''); 
+}
+// Busca un nombre ingresado en la lista de productos 
 const search = (product, list) => {
     const searchedElement = sinEspacios(product.toLowerCase());
     const filteredProducts = list.filter( p => {
@@ -150,13 +123,11 @@ const search = (product, list) => {
         renderTitle(`Se muestran resultados de "${product}"`);
     } else{
         productsContainer.innerHTML = /* HTML */
-                                    `<p class='no-results'>No se encontraron resultados para "${product}"</p>`;
+        `<p class='no-results'>No se encontraron resultados para "${product}"</p>`;
         renderTitle('');
-        renderLength([]);
-                            
+        renderLength([]);                        
     }
 }
-
 // Extrae los nombres de los distintos modelos de la lista de productos
 const extractNames = (productList) => {
     const modelNames = [];
@@ -168,18 +139,8 @@ const extractNames = (productList) => {
     }
     return modelNames;
 }
-
-// renderiza un lista con los modelos en la seccion filtrar
-const renderFilterButtons = (productList) =>{
-    modelNames = extractNames(productList);
-    seccionFiltroModelos.innerHTML = '';
-    seccionFiltroModelos.innerHTML += /* HTML */ `<button class="filtro-btn">Todos los modelos</button>`
-    for (const modelo of modelNames){
-        seccionFiltroModelos.innerHTML+=/* HTML */`<button class="filtro-btn">${modelo}</button>`
-    }
-}
 //  Filtra segun el modelo seleccionado
-const filtrar = (modelo, productList) => {
+const filtrarPorNombre = (modelo, productList) => {
     let productosFiltrados
     if (modelo == 'Todos los modelos'){
         productosFiltrados =  JSON.parse(localStorage.getItem('categoriaActiva')) ?? productos;
@@ -191,7 +152,6 @@ const filtrar = (modelo, productList) => {
     localStorage.setItem('filtroActivo', JSON.stringify(productosFiltrados));
     localStorage.setItem('titulo', modelo);
 }
-
 //  Ordena segun algun criterio seleccionado
 const ordenarSegun = (criterio, list) => {
     if ( criterio == 'ascendente'){
@@ -204,24 +164,91 @@ const ordenarSegun = (criterio, list) => {
     renderProducts(list);
 }
 
+// <-------------------------OBTENER PRODUCTOS DEL JSON Y RENDERIZAR------------------------->
+async function getProducts() {
+    hideLoader();
+    try {
+        const endPoint = bodyIndex ? 'data.json' : '../data.json';
+        const response = await fetch(endPoint);
+        const data = await response.json();
+        const { products, categories } = data;
+        let filtroGuardado;
+        let categoriaGuardada;
+        productos = products;
+        categorias = categories;
+
+        if ( bodyIndex ) {
+            renderCategories(categorias);
+            renderNav(categorias);
+        } else {
+            categoriaGuardada = JSON.parse(localStorage.getItem('categoriaActiva')) ?? productos;
+            filtroGuardado = JSON.parse(localStorage.getItem('filtroActivo')) ?? categoriaGuardada;
+            
+            const tituloGuardado = localStorage.getItem('titulo') ?? 'Todos los productos';
+            renderProducts(filtroGuardado);
+            renderTitle(tituloGuardado);
+            renderFilterButtons(categoriaGuardada);
+            renderNav(categorias);
+        }
+    } catch (error){
+        console.log(error);
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Ocurrió un error al cargar los datos!",
+        });
+    } finally {
+        hideLoader(); 
+    }
+    
+}
+
 getProducts();
 
 // <-----------------------------------EVENT LISTENERS----------------------------------->
-//Añado un event listener al icono del carrito para que se muestre/esconda
-cartBtn.addEventListener('click', ()  => toggleCart());
-// Al presionar el icono de "basura", elimina el producto del carrito
-cartProductsContainer.addEventListener('click', e =>{
-    if (e.target.classList.contains('remove_item')){
-        const product = e.target.parentElement;
-        const id = product.id;
-        console.log(cart);
-        cart.removeFromCart( id );
-    }
-}); 
+// <--------Event listeners de INDEX.HMTL-------->
+if ( bodyIndex) {
+    document.addEventListener('click', e=>{
+        const btn = e.target;
+        console.log(btn);
+        if(btn.classList.contains('nav_btn') || btn.classList.contains('category_index_btn') || btn.classList.contains('comprar')){
+            const id = btn.id;
+            const name = id != 0 ? (categorias.find( item => item.category_id == id)).name : 'Todos los productos';
+            console.table(name);
+            const prods = id != 0 ? filtrarPorID(productos, id) : productos ;
+            console.table(prods);
+            localStorage.setItem('filtroActivo', JSON.stringify(prods));
+            prods != [] ? localStorage.setItem('categoriaActiva', JSON.stringify(prods)) : localStorage.setItem('categoriaActiva', productos);
+            localStorage.setItem('titulo', name);
+        }
+    });
+}
 
+// <-------Event Listeners de PRODUCTS.HTML------->
+if ( ! bodyIndex ) {
+    // Añado un event listener en la barra de navegacion para que se active al clickear alguna categoria
+    navCategories.addEventListener('click', e => {
+        const btn = e.target;
+        let categoriaSeleccionada;
+        let textoTitulo;
+        if (btn.classList.contains('nav_btn')) {
+            const idCategory = btn.id;
+            if  (idCategory == '0') {
+                categoriaSeleccionada = productos;            
+                textoTitulo = 'Todos los productos'; 
+            } else {
+                categoriaSeleccionada = filtrarPorID(productos, idCategory);
+                textoTitulo = btn.innerText;
+            }
+            renderProducts(categoriaSeleccionada);
+            renderTitle(textoTitulo);
+            renderFilterButtons(categoriaSeleccionada);
+            localStorage.setItem('categoriaActiva', JSON.stringify(categoriaSeleccionada));  //Guardo la categoria en el localStorage
+            localStorage.setItem('filtroActivo', JSON.stringify(categoriaSeleccionada)); //Guardo el filtro en el localstorage
+            localStorage.setItem('titulo', textoTitulo); // Guardo el nombre del filtro en el localstorage
+        }
+    });
 
-if ( ! document.querySelector('#body_index')) {
-    
     // añado event listener a la seccion de productos para que al clickear agregar al carrito se añada;
     productsContainer.addEventListener('click', e => {
         e.preventDefault;
@@ -243,13 +270,12 @@ if ( ! document.querySelector('#body_index')) {
             hideLoader();
         }, 1000);
     });
-
     // Añado event listener para que filtre segun el modelo clickeado;
     seccionFiltroModelos.addEventListener('click', e => {
         e.preventDefault();
         const btn = e.target
         if (btn.classList.contains('filtro-btn')){
-            filtrar(btn.textContent, productos);
+            filtrarPorNombre(btn.textContent, productos);
         }
     });
 
@@ -261,29 +287,24 @@ if ( ! document.querySelector('#body_index')) {
     });
 
     // Añado event listener al icono de busqueda para que se muestre/esconda
-    searchIcon.addEventListener('click', () =>  toggleSearch());
-
-    // Añado un event listener en la barra de navegacion para que se active al clickear alguna categoria
-    navCategories.addEventListener('click', e => {
-        const btn = e.target
-        let categoriaSeleccionada
-        let textoTitulo
-        if (btn.classList.contains('nav_btn')) {
-            const idCategory = btn.id;
-            if  (idCategory == 'todos') {
-                categoriaSeleccionada = productos;            
-                textoTitulo = 'Todos los productos'; 
-            } else {
-                categoriaSeleccionada = filtrarProductos(productos, idCategory);
-                textoTitulo = btn.innerText;
-            }
-            renderProducts(categoriaSeleccionada);
-            renderTitle(textoTitulo);
-            renderFilterButtons(categoriaSeleccionada);
-            localStorage.setItem('categoriaActiva', JSON.stringify(categoriaSeleccionada));  //Guardo la categoria en el localStorage
-            localStorage.setItem('filtroActivo', JSON.stringify(categoriaSeleccionada)); //Guardo el filtro en el localstorage
-            localStorage.setItem('titulo', textoTitulo); // Guardo el nombre del filtro en el localstorage
-        }
-    });
-
+    searchIcon.addEventListener('click', () =>  toggleSearch());  
 }
+
+
+// <----EVENTS LISTENERS COMUNES A AMBOS ARCHIVOS---->;
+
+//Añado un event listener al icono del carrito para que se muestre/esconda
+cartBtn.addEventListener('click', ()  => toggleCart());
+
+// Al presionar el icono de "basura", elimina el producto del carrito
+cartProductsContainer.addEventListener('click', e =>{
+    if (e.target.classList.contains('remove_item')){
+        const product = e.target;
+        const id = product.id;
+        console.log(cart);
+        cart.removeFromCart( id );
+    }
+}); 
+
+
+
