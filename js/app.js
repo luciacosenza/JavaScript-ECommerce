@@ -186,6 +186,7 @@ async function getProducts() {
         let categoriaGuardada;
         productos = products;
         categorias = categories;
+        storedProducts = JSON.parse(localStorage.getItem('products')) ?? productos;
 
         if ( bodyIndex ) {
             renderCategories(categorias);
@@ -193,7 +194,6 @@ async function getProducts() {
         } else {
             categoriaGuardada = JSON.parse(localStorage.getItem('categoriaActiva')) ?? productos;
             filtroGuardado = JSON.parse(localStorage.getItem('filtroActivo')) ?? categoriaGuardada;
-            storedProducts = JSON.parse(localStorage.getItem('products')) ?? productos;
 
             const tituloGuardado = localStorage.getItem('titulo') ?? 'Todos los productos';
             renderProducts(filtroGuardado);
@@ -202,7 +202,6 @@ async function getProducts() {
             renderNav(categorias);
         }
     } catch (error){
-        console.log(error);
         Swal.fire({
             icon: "error",
             title: "Oops...",
@@ -223,13 +222,10 @@ getProducts();
 if ( bodyIndex) {
     document.addEventListener('click', e=>{
         const btn = e.target;
-        console.log(btn);
         if(btn.classList.contains('nav_btn') || btn.classList.contains('category_index_btn') || btn.classList.contains('comprar')){
             const id = btn.id;
             const name = id != 0 ? (categorias.find( item => item.category_id == id)).name : 'Todos los productos';
-            console.table(name);
             const prods = id != 0 ? filtrarPorID(productos, id) : productos ;
-            console.table(prods);
             localStorage.setItem('filtroActivo', JSON.stringify(prods));
             prods != [] ? localStorage.setItem('categoriaActiva', JSON.stringify(prods)) : localStorage.setItem('categoriaActiva', productos);
             localStorage.setItem('titulo', name);

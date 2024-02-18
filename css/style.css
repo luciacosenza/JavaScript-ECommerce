@@ -783,8 +783,30 @@ nav h2 {
   margin: 20px;
 }
 
+.iphone_hero {
+  height: 500px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+.iphone_hero div {
+  height: 50%;
+}
+.iphone_hero .img {
+  width: 100%;
+  background-image: url("../../assets/iphone15hero.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.iphone_hero p {
+  font-family: "SFPro Rounded", sans-serif;
+  font-size: 20px;
+  text-align: center;
+  padding-top: 100px;
+}
+
 footer {
-  background-color: #333;
+  background-color: black;
   color: #fff;
   text-align: center;
   padding: 1em;

@@ -1,0 +1,22 @@
+.iphone_hero{
+    height: 500px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    div{
+        height: 50%;
+    }
+    .img{
+        width: 100%;
+        background-image: url("../../assets/iphone15hero.jpeg");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    p{
+        font-family: 'SFPro Rounded', sans-serif;
+        
+        font-size: 20px;
+        text-align: center;
+        padding-top: 100px;
+    }
+}
